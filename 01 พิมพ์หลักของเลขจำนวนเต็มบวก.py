@@ -1,13 +1,13 @@
-import math
-number = input()
-digits = len(number)
+number = int(input())
 i = 1
 
-if int(number) <= 0 :
+if number <= 0:
     print("ERROR")
-else :
-    while i <= digits:
-        digit = math.floor(int(number)) % 10
+else:
+    while True:
+        if number == 0:
+            break
+        digit = number % 10
         print(digit)
         i += 1
-        number = int(number) / 10
+        number = number // 10
