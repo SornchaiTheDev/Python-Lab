@@ -23,8 +23,3 @@ else :
 
         print(f"{i}! = {howto} = {ans}")
         i += 1
-
-    
-   
-
-    
