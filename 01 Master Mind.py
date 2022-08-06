@@ -3,42 +3,37 @@ save_target = target
 guess = int(input("Enter your guess (4-digit integer): "))
 save_guess = guess
 digits = 0
+target_count = 0
+position = 0
+
+
 while True:
-    if guess == 0:
+    if target == 0:
         break
+    target_digit = target % 10
 
-    guess_digit = guess % 10
-
+    guess_count = 0
     while True:
-        if target == 0:
+        guess_digit = guess % 10
+
+        if guess == 0:
             break
 
-        target_digit = target % 10
+        if guess_count == target_count and guess_digit == target_digit:
+            position += 1
+            break
 
         if guess_digit == target_digit:
             digits += 1
 
-        target = target // 10
-
-    guess = guess // 10
-    target = save_target
-
-guess = save_guess
-target = save_target
-position = 0
-while True:
-    if guess == 0:
-        break
-
-    guess_digit = guess % 10
-    target_digit = target % 10
-
-    if target_digit == guess_digit:
-        position += 1
-        digits -= 1
+        guess = guess // 10
+        guess_count += 1
 
     target = target // 10
-    guess = guess // 10
+    target_count += 1
+    guess = save_guess
+
+
 
 if digits == 0 and position == 4:
     print("Congratulations, you just mastered my mind!!")
@@ -59,8 +54,8 @@ else:
     elif position == 1:
         position = "One position correct"
     elif position == 2:
-        position = "Two position correct"
+        position = "Two positions correct"
     elif position == 3:
-        position = "Three position correct"
+        position = "Three positions correct"
 
     print(f"{position}, {digits} correct")
